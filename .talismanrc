@@ -1,4 +1,6 @@
 fileignoreconfig:
-- filename: package-lock.json
-  checksum: a9e48d43cb4bfed8ce9e4c70d68de0eff17c48416a65ede8b8d49de22f472e6e
+  - filename: package-lock.json
+    checksum: c3a220f6a5bd7cfb209d4bc74c2ed4a562bdd3c70922955cf16f0930087e9c78
+  - filename: src/pages/ProcedureList.jsx
+    checksum: 77d9588b7dc19323149a3d213d74e6f97156a508612dc5508f9be148c419a936
 version: ""

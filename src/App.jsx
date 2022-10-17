@@ -1,8 +1,11 @@
 import React from "react";
 import ReactDOM from "react-dom";
-import Sample from "./components/Sample";
-
+import TopMenu from "./components/TopMenu";
 import "./index.scss";
 
-const App = () => <Sample />;
+const App = () => (
+  <>
+    <TopMenu />
+  </>
+);
 ReactDOM.render(<App />, document.getElementById("app"));
