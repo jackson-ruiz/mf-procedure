@@ -44,7 +44,9 @@ module.exports = {
       name: "mf_procedure",
       filename: "remoteEntry.js",
       remotes: {},
-      exposes: {},
+      exposes: {
+        "./ProceduresPage": "./src/components/TopMenu.jsx",
+      },
       shared: {
         ...deps,
         react: {
