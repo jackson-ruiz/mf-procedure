@@ -5,8 +5,13 @@ import { useAcl } from "./useAcl";
 export const useProceduresManager = () => {
   const { TransformProcedureData } = useAcl();
   const baseURL = `http://localhost:3002/procedure`;
+  const [formData, setFormData] = useState({
+    Nombre: "",
+    Identificacion: "",
+    Descripcion: "",
+  });
 
-  const loadDefaultProcedures = () => {
+  const loadProcedures = () => {
     const [procedure, setProcedure] = useState([]);
     axios.get(baseURL).then((response) => {
       setProcedure(
@@ -18,7 +23,26 @@ export const useProceduresManager = () => {
 
     return procedure;
   };
+
+  const saveProcedure = async () => {
+    const { Nombre, Identificacion, Descripcion } = formData;
+    axios({
+      method: "post",
+      url: `http://localhost:3002/procedure?Nombre=${Nombre}&Identificacion=${Identificacion}&Descripcion=${Descripcion}`,
+    })
+      .then((response) => {
+        console.info(`ESTADO DE TRANSACCION: ${response.status}`);
+        console.info(
+          `RESULTADO DE TRANSACCION: ${JSON.stringify(response.data)}`
+        );
+      })
+      .catch((err) => console.warn(err));
+  };
+
   return {
-    loadDefaultProcedures,
+    loadProcedures,
+    formData,
+    setFormData,
+    saveProcedure,
   };
 };
