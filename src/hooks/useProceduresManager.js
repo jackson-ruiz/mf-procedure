@@ -26,10 +26,9 @@ export const useProceduresManager = () => {
 
   const saveProcedure = async () => {
     const { Nombre, Identificacion, Descripcion } = formData;
-    axios({
-      method: "post",
-      url: `http://localhost:3002/procedure?Nombre=${Nombre}&Identificacion=${Identificacion}&Descripcion=${Descripcion}`,
-    })
+    const apiUrl = `http://localhost:3002/procedure?Nombre=${Nombre}&Identificacion=${Identificacion}&Descripcion=${Descripcion}`;
+    axios
+      .post(apiUrl)
       .then((response) => {
         console.info(`ESTADO DE TRANSACCION: ${response.status}`);
         console.info(
