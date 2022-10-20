@@ -12,23 +12,7 @@ import KeyboardArrowUpIcon from "@material-ui/icons/KeyboardArrowUp";
 import Collapse from "@material-ui/core/Collapse";
 import Box from "@material-ui/core/Box";
 import Typography from "@material-ui/core/Typography";
-
-let rowsData = [];
-const onLoad = () => {
-  for (let i = 0; i < 5; i++) {
-    rowsData = [
-      ...rowsData,
-      {
-        Nro: i + 1,
-        Nombre: `Trámite ${i + 1}`,
-        Identificacion: 100000001 + i,
-        Fecha: `2020-01-0${i + 1}`,
-        Descripcion: `Descripción del trámite ${i + 1}`,
-      },
-    ];
-  }
-};
-onLoad();
+import { useProceduresManager } from "../hooks/useProceduresManager";
 
 const Row = (props) => {
   const [open, setOpen] = React.useState(false);
@@ -67,6 +51,8 @@ const Row = (props) => {
 };
 
 export const DataGrid = () => {
+  const { loadDefaultProcedures } = useProceduresManager();
+  const procedure = loadDefaultProcedures();
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">
@@ -88,9 +74,8 @@ export const DataGrid = () => {
           </TableRow>
         </TableHead>
         <TableBody>
-          {rowsData.map((rowData) => (
-            <Row key={rowData.Nro} row={rowData} />
-          ))}
+          {procedure.length > 0 &&
+            procedure.map((rowData) => <Row key={rowData.Nro} row={rowData} />)}
         </TableBody>
       </Table>
     </TableContainer>

@@ -1,24 +1,24 @@
-import React, { useState } from "react";
+import { useState } from "react";
+import axios from "axios";
+import { useAcl } from "./useAcl";
 
 export const useProceduresManager = () => {
-  const { procedures, setProcedures } = useState();
+  const { TransformProcedureData } = useAcl();
+  const baseURL = `http://localhost:3002/procedure`;
+
   const loadDefaultProcedures = () => {
-    for (let i = 0; i < 5; i++) {
-      setProcedures([
-        ...procedures,
-        {
-          Nro: i + 1,
-          Nombre: `Trámite ${i + 1}`,
-          Identificacion: 100000001 + i,
-          Fecha: `2020-01-0${i + 1}`,
-          Descripcion: `Descripción del trámite ${i + 1}`,
-        },
-      ]);
-    }
+    const [procedure, setProcedure] = useState([]);
+    axios.get(baseURL).then((response) => {
+      setProcedure(
+        response.data.map((procedureItem) =>
+          TransformProcedureData(procedureItem)
+        )
+      );
+    });
+
+    return procedure;
   };
   return {
-    procedures,
-    setProcedures,
     loadDefaultProcedures,
   };
 };
