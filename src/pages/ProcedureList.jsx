@@ -51,8 +51,8 @@ const Row = (props) => {
 };
 
 export const DataGrid = () => {
-  const { loadDefaultProcedures } = useProceduresManager();
-  const procedure = loadDefaultProcedures();
+  const { loadProcedures } = useProceduresManager();
+  const procedure = loadProcedures();
   return (
     <TableContainer component={Paper}>
       <Table aria-label="collapsible table">

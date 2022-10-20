@@ -29,7 +29,7 @@ const TabPanel = (props) => {
       )}
     </div>
   );
-}
+};
 
 TabPanel.propTypes = {
   children: PropTypes.node,
@@ -42,7 +42,7 @@ const a11yProps = (index) => {
     id: `scrollable-force-tab-${index}`,
     "aria-controls": `scrollable-force-tabpanel-${index}`,
   };
-}
+};
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -54,7 +54,7 @@ const useStyles = makeStyles((theme) => ({
 
 const TopMenu = () => {
   const classes = useStyles();
-  const [value, setValue] = React.useState(1);
+  const [value, setValue] = React.useState(0);
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -75,9 +75,9 @@ const TopMenu = () => {
           <Tab
             label="Nuevo Trámite"
             icon={<VerticalSplitIcon />}
-            {...a11yProps(0)}
+            {...a11yProps(1)}
           />
-          <Tab label="Listá Trámites" icon={<ListIcon />} {...a11yProps(1)} />
+          <Tab label="Listá Trámites" icon={<ListIcon />} {...a11yProps(0)} />
         </Tabs>
       </AppBar>
       <TabPanel value={value} index={0}>
