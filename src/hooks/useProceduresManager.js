@@ -4,7 +4,7 @@ import { useAcl } from "./useAcl";
 
 export const useProceduresManager = () => {
   const { TransformProcedureData } = useAcl();
-  const baseURL = `http://localhost:3002/procedure`;
+  const baseURL = `${process.env.BACKEND_API_BASE_URL}/procedure`;
   const [formData, setFormData] = useState({
     Nombre: "",
     Identificacion: "",
@@ -26,7 +26,7 @@ export const useProceduresManager = () => {
 
   const saveProcedure = async () => {
     const { Nombre, Identificacion, Descripcion } = formData;
-    const apiUrl = `http://localhost:3002/procedure?Nombre=${Nombre}&Identificacion=${Identificacion}&Descripcion=${Descripcion}`;
+    const apiUrl = `${process.env.BACKEND_API_BASE_URL}/procedure?Nombre=${Nombre}&Identificacion=${Identificacion}&Descripcion=${Descripcion}`;
     axios
       .post(apiUrl)
       .then((response) => {
