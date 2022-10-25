@@ -1,0 +1,20 @@
+Proyecto de pruebas para demostración de microservicios. Parte micro frontend contenido
+
+Installation
+1:) Crear un directorio común para almacenar el proyecto:
+● Contenedor: https://github.com/jackson-ruiz/mf-container
+● MicroFrontend: https://github.com/jackson-ruiz/mf-procedure
+
+2.) Clonar localmente el repositorio del proyecto MicroFrontend:
+git clone https://github.com/jackson-ruiz/mf-procedure.git
+
+3.) Ingresar al repositorio: mf-procedure
+
+Usage
+1.) inicializar docker (colima start).
+2.) Construir la imagen de Docker para node (docker build . -t mf-procedure-image).
+3.) Ejecutar el contenedor (docker run -p 3001:3001 mf-procedure-image)
+4.) Abrir el navegador y escribir http://localhost:3001
+
+License
+MIT (https://choosealicense.com/licenses/mit/)
