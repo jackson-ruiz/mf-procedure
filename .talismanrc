@@ -1,4 +1,4 @@
 fileignoreconfig:
-  - filename: package-lock.json
-    checksum: 0432e6b760f65af557a56924826fd93138874eb886685c7b8129490096e45be2
+  - filename: src/Bootstrap.js
+    checksum: d858166875d2c8014209e42b6b96f350995ca085add705150fcd8aa408d17d2e
 version: ""

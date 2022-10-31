@@ -19,7 +19,7 @@ const developmentConfig = {
       filename: "remoteEntry.js",
       remotes: {},
       exposes: {
-        "./ProceduresPage": "./src/components/TopMenu.jsx",
+        "./TabScreen": "./src/components/tabScreen/TabScreen.jsx",
       },
       shared: {
         ...deps,

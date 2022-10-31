@@ -4,12 +4,9 @@ import { makeStyles } from "@material-ui/core/styles";
 import AppBar from "@material-ui/core/AppBar";
 import Tabs from "@material-ui/core/Tabs";
 import Tab from "@material-ui/core/Tab";
-import VerticalSplitIcon from "@material-ui/icons/VerticalSplit";
-import ListIcon from "@material-ui/icons/List";
+
 import Typography from "@material-ui/core/Typography";
 import Box from "@material-ui/core/Box";
-import NewProcedure from "../pages/NewProcedure";
-import DataGrid from "../pages/ProcedureList";
 
 const TabPanel = (props) => {
   const { children, value, index, ...other } = props;
@@ -52,9 +49,10 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const TopMenu = () => {
+const TabScreen = (props) => {
   const classes = useStyles();
   const [value, setValue] = React.useState(0);
+  const { data } = props;
 
   const handleChange = (event, newValue) => {
     setValue(newValue);
@@ -72,22 +70,37 @@ const TopMenu = () => {
           textColor="primary"
           aria-label="scrollable force tabs example"
         >
-          <Tab
-            label="Nuevo Trámite"
-            icon={<VerticalSplitIcon />}
-            {...a11yProps(1)}
-          />
-          <Tab label="Listá Trámites" icon={<ListIcon />} {...a11yProps(0)} />
+          {data.map((tab, index) => {
+            return (
+              <Tab
+                label={tab.tabLabel}
+                icon={tab.tabLabelIcon}
+                key={index}
+                {...a11yProps(index)}
+              />
+            );
+          })}
         </Tabs>
       </AppBar>
-      <TabPanel value={value} index={0}>
-        <NewProcedure />
-      </TabPanel>
-      <TabPanel value={value} index={1}>
-        <DataGrid />
-      </TabPanel>
+      {data.map((tab, index) => {
+        return (
+          <TabPanel value={value} index={index} key={index}>
+            {tab.tabContent}
+          </TabPanel>
+        );
+      })}
     </div>
   );
 };
 
-export default TopMenu;
+TabScreen.propTypes = {
+  data: PropTypes.arrayOf(
+    PropTypes.shape({
+      tabLabel: PropTypes.string.isRequired,
+      tabLabelIcon: PropTypes.node.isRequired,
+      tabContent: PropTypes.node.isRequired,
+    })
+  ),
+};
+
+export default TabScreen;
