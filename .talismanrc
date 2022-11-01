@@ -1,4 +1,6 @@
 fileignoreconfig:
-  - filename: src/Bootstrap.js
-    checksum: d858166875d2c8014209e42b6b96f350995ca085add705150fcd8aa408d17d2e
+  - filename: src/components/tableGrid/TableHeader.jsx
+    checksum: 285714f0fcefbf45ced467c68350828049704303fc521c589d873a5c17980616
+  - filename: src/components/tableGrid/TableData.jsx
+    checksum: 59bab40f275cc164a45461f0365642315aa7647e979b48ae3a08f48b5a3071b0
 version: ""
