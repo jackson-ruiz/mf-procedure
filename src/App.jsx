@@ -3,7 +3,7 @@ import TabScreen from "./components/tabScreen/TabScreen";
 import VerticalSplitIcon from "@material-ui/icons/VerticalSplit";
 import ListIcon from "@material-ui/icons/List";
 import NewProcedure from "./pages/NewProcedure";
-import DataGrid from "./pages/ProcedureList";
+import ProcedureList from "./pages/ProcedureList";
 
 const tabData = [
   {
@@ -14,9 +14,11 @@ const tabData = [
   {
     tabLabel: "Listá Trámites",
     tabLabelIcon: <ListIcon />,
-    tabContent: <DataGrid />,
+    tabContent: <ProcedureList />,
   },
 ];
 
-export const App = () => <TabScreen data={tabData} />;
+export const App = () => {
+  return <TabScreen data={tabData} />;
+};
 export default App;
