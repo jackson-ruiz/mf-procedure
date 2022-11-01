@@ -20,7 +20,6 @@ const developmentConfig = {
       remotes: {},
       exposes: {
         "./TabScreen": "./src/components/tabScreen/TabScreen.jsx",
-        "./SamplePage": "./src/pages/SamplePage.jsx",
       },
       shared: {
         ...deps,
