@@ -12,7 +12,7 @@ const tabData = [
     tabContent: <NewProcedure />,
   },
   {
-    tabLabel: "Listá Trámites",
+    tabLabel: "Lista Trámites",
     tabLabelIcon: <ListIcon />,
     tabContent: <ProcedureList />,
   },

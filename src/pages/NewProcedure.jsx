@@ -6,80 +6,65 @@ import CardContent from "@material-ui/core/CardContent";
 import Button from "@material-ui/core/Button";
 import TextField from "@material-ui/core/TextField";
 import { useProceduresManager } from "../hooks/useProceduresManager";
+import TextBox from "../components/form/TextBox";
 
 const NewProcedure = () => {
   const { formData, setFormData, saveProcedure } = useProceduresManager();
 
-  const handleChangeName = (event) => {
-    event.preventDefault();
+  const handleChangeName = (value) => {
     setFormData({
       ...formData,
-      Nombre: event.target.value,
+      Nombre: value,
     });
   };
 
-  const handleChangeIdentification = (event) => {
-    event.preventDefault();
+  const handleChangeIdentification = (value) => {
     setFormData({
       ...formData,
-      Identificacion: event.target.value,
+      Identificacion: value,
     });
   };
 
-  const handleChangeDescription = (event) => {
-    event.preventDefault();
+  const handleChangeDescription = (value) => {
     setFormData({
       ...formData,
-      Descripcion: event.target.value,
+      Descripcion: value,
     });
   };
 
   const handleSubmit = () => {
     saveProcedure();
   };
-
   return (
     <>
       <Card className="ml-2 w-full">
         <form className="m-auto" noValidate autoComplete="off">
           <CardContent>
             <div className="mb-2">
-              <TextField
+              <TextBox
                 id="newProcedureId"
                 label="Nombre Trámite"
-                variant="outlined"
-                size="small"
-                className="my-1"
-                fullWidth
-                value={formData.Nombre}
-                onChange={handleChangeName}
+                type="text"
+                defaultValue={formData.Nombre}
+                changeAction={handleChangeName}
               />
             </div>
             <div className="mb-2">
-              <TextField
+              <TextBox
                 id="IdNumber"
                 label="Número Identificación"
-                variant="outlined"
-                size="small"
                 type="number"
-                className="wy-1"
-                fullWidth
-                value={formData.Identificacion}
-                onChange={handleChangeIdentification}
+                defaultValue={formData.Identificacion}
+                changeAction={handleChangeIdentification}
               />
             </div>
             <div className="mb-2">
-              <TextField
-                id="descriptionID"
+              <TextBox
+                id="IdDescription"
                 label="Descripción"
-                variant="outlined"
-                size="small"
-                className="mmy-1"
-                multiline
-                minRows={4}
-                fullWidth
-                value={formData.Descripcion}
-                onChange={handleChangeDescription}
+                type="text"
+                defaultValue={formData.Descripcion}
+                changeAction={handleChangeDescription}
               />
             </div>
           </CardContent>
